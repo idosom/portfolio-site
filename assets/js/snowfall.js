@@ -822,10 +822,10 @@
         }
         var o = r(576),
             a = {
-                color: "orange",
-                radius: [.6, 5],
-                speed: [1, 3],
-                wind: [-1.5, 4]
+                color: "rgba(196, 236, 255, 0.88)",
+                radius: [.6, 3],
+                speed: [1, 2.5],
+                wind: [-.5, 3]
             },
             c = function(t) {
                 var r = arguments.length > 1 && void 0 !== arguments[1] ? arguments[1] : null,
@@ -898,7 +898,7 @@
                 }))
             })), window.addEventListener("resize", a), f(), a()
         }(f, 500, {
-            color: "white"
+            color: "rgba(196, 236, 255, 0.88)"
         })
     })()
 })();
