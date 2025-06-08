@@ -267,6 +267,16 @@ body.landing-active {
     display: none !important;
 }
 
+/* Catppuccin Mocha color classes */
+.ctp-mauve  { color: #cba6f7; }
+.ctp-blue   { color: #89b4fa; }
+.ctp-green  { color: #a6e3a1; }
+.ctp-yellow { color: #f9e2af; }
+.ctp-peach  { color: #fab387; }
+.ctp-pink   { color: #f5c2e7; }
+.ctp-red    { color: #f38ba8; }
+/* ...add more as needed... */
+
 /* Responsive adjustments (keep as is or adjust further if needed) */
 @media (max-width: 768px) {
     body:not(.landing-active) { padding: 10px; }

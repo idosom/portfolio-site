@@ -139,7 +139,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     `  clear / cls      - Clear the terminal screen<br>` +
                     `  motd             - Display the message of the day<br>` +
                     `  exit             - Close the terminal<br>`+
-                    `  repo             - Link to this project's repository (if any)`;
+                    `  neofetch         - The classic<br>`;
                 displayOutput(helpText, '', true);
                 break;
             case 'whoami':
@@ -161,6 +161,17 @@ document.addEventListener('DOMContentLoaded', function() {
                     linksHtml += `<a href="${sanitizeText(link.url)}" target="_blank">${sanitizeText(link.terminalText || link.displayText)}</a></span>`;
                 });
                 displayOutput(linksHtml, '', true);
+                break;
+            case 'neofetch':
+                const neofetchOutput =
+                    `<span class="ctp-mauve">OS:</span> I use Arch BTW<br>` +
+                    `<span class="ctp-blue">Uptime:</span> 22 minutes<br>` +
+                    `<span class="ctp-green">CPU:</span> Ryzen 7 9700x<br>` +
+                    `<span class="ctp-yellow">GPU:</span> RTX 3080<br>` +
+                    `<span class="ctp-peach">Resolution:</span> 2560x1440<br>` +
+                    `<span class="ctp-pink">WM:</span> Hyprland<br>` +
+                    `<span class="ctp-red">Terminal:</span> kitty`;
+                displayOutput(neofetchOutput, '', true);
                 break;
             case 'open':
                 if (args.length === 0) {
