@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0'>
+    <title>404 - Page Not Found</title>
+    <link rel="shortcut icon" href="assets/images/favicon.png" type="image/png">
+    <link rel="icon" href="assets/images/favicon.png" type="image/png">
+    <style>
+        /* Catppuccin Mocha Variables (Subset) */
+        :root {
+            --base: #1E1E2E;
+            --mantle: #181825;
+            --crust: #11111B;
+            --text: #CDD6F4;
+            --subtext1: #BAC2DE;
+            --overlay2: #9399B2;
+            --surface0: #313244;
+            --mauve: #CBA6F7;
+            --red: #F38BA8;     /* For error messages */
+            --green: #A6E3A1;   /* For links/buttons */
+            --font-mono: 'JetBrains Mono Regular', 'Consolas', 'Courier New', monospace;
+        }
+
+        @font-face {
+            font-family: 'JetBrains Mono Regular';
+            /* Adjust path if your font is elsewhere or use a web font */
+            src: url('assets/Fonts/JetBrainsMono-Regular.ttf');
+        }
+
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            font-family: var(--font-mono);
+            background-color: var(--base);
+            color: var(--text);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            line-height: 1.7;
+            font-size: 16px;
+            overflow: hidden; /* Prevent scrollbars on the 404 page itself */
+        }
+
+        .container {
+            padding: 30px;
+            max-width: 600px;
+        }
+
+        .status-code {
+            font-size: 6em; /* Large 404 number */
+            font-weight: bold;
+            color: var(--red);
+            margin-bottom: 0.1em;
+            text-shadow: 3px 3px 0px var(--crust);
+        }
+
+        .message {
+            font-size: 1.5em;
+            color: var(--subtext1);
+            margin-bottom: 0.5em;
+        }
+
+        .explanation {
+            font-size: 1em;
+            color: var(--text);
+            margin-bottom: 2em;
+        }
+
+        .home-link {
+            display: inline-block;
+            padding: 12px 25px;
+            background-color: var(--green);
+            color: var(--crust); /* Dark text on green button */
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: bold;
+            transition: background-color 0.2s ease, transform 0.2s ease;
+            font-size: 1em;
+        }
+
+        .home-link:hover {
+            background-color: #8ccf7e; /* Lighter green */
+            transform: translateY(-2px);
+        }
+
+        /* Optional: ASCII Art or simple graphic (using pre for monospace alignment) */
+        .ascii-art {
+            font-family: 'Courier New';
+            color: var(--overlay2);
+            font-size: 1.1em;
+            font-weight: bold;
+            margin-bottom: 1.5em;
+            white-space: pre; /* Preserve spacing */
+        }
+
+        @media (max-width: 600px) {
+            .status-code {
+                font-size: 4.5em;
+            }
+            .message {
+                font-size: 1.3em;
+            }
+            body {
+                font-size: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="status-code">404</div>
+        <div class="message">Page Not Found</div>
+        <pre class="ascii-art">
+   (\__/)  .~    ~. D) 
+   /O O  ./      .'    
+  {O__,   \    {       
+    / .  . )    \      
+    |-| '-' \    }     
+   .(   _(   )_.'      
+  '---.~_ _ _&          
+        </pre>
+        <div class="explanation">
+            Oops! It seems the page you're looking for has gone into the void,
+            or perhaps it never existed.
+        </div>
+        <a href="/" class="home-link">Return to Home</a>
+        <!-- Use "/index.html" if your server doesn't automatically map / to index.html -->
+    </div>
+</body>
+</html>

@@ -1,44 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <link href="assets/css/style.css" rel="stylesheet">
-        <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0'>
-        <link rel="shortcut icon" href="assets/images/favicon.png" type="image/png">
-        <link rel="icon" href="assets/images/favicon.png" type="image/png">
-        <title>Ido Somekh</title>
-    </head>
-    <body>
-        <div class="min-h-full flex-h-center" id="background_div">
+<head>
+    <meta charset="utf-8">
+    <link href="style.css" rel="stylesheet">
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0'>
+    <link rel="shortcut icon" href="assets/images/favicon.png" type="image/png">
+    <link rel="icon" href="assets/images/favicon.png" type="image/png">
+    <title>Ido Somekh</title>
+</head>
+<body>
 
-            <div class="mt-48 page-full-wrap relative ">
-                <img class="display-image m-auto" data-src="assets/images/logo.png" src="assets/images/logo.jpeg" alt="[Profile Photo]"/>
-                <h2 class="page-title page-text-color page-text-font mt-16 text-center">Ido Somekh</h2>
-                       
-                <div class="mt-24">
-                    <div class="page-item-wrap relative">
-                        <div class="page-item flex-both-center absolute"></div>
-                        <a target="_blank"  class="page-item-each py-10 flex-both-center" href="https://www.linkedin.com/in/idosom/" data-id="261652" data-type="page_item">
-                            <img class="link-each-image" data-src="assets/images/linkedin.png" src="assets/images/linkedin.png" alt="LinkedIn @ Ido Somekh"/>
-                            <span class=" item-title text-center">LinkedIn @ Ido Somekh</span>
-                        </a>
-                    </div>        
-                    <div class="page-item-wrap relative">
-                        <div class="page-item flex-both-center absolute"></div>
-                        <a target="_blank"  class="page-item-each py-10 flex-both-center" href="https://github.com/idosom" data-id="261685" data-type="page_item">
-                            <img class="link-each-image" data-src="assets/images/github.png" src="assets/images/github.png" alt="GitHub @ Ido Somekh"/>
-                            <span class=" item-title text-center">GitHub @ idosom</span>
-                        </a>
-                    </div>                            
-                    <div class="page-item-wrap relative">
-                        <div class="page-item flex-both-center absolute"></div>
-                        <a target="_blank"  class="page-item-each py-10 flex-both-center" href="https://www.instagram.com/ido.png" data-id="261685" data-type="page_item">
-                            <img class="link-each-image" data-src="assets/images/instagram.png" src="assets/images/instagram.png" alt="Instagram @ Ido Somekh"/>
-                            <span class=" item-title text-center">Instagram @ ido.png</span>
-                        </a>
-                    </div>                    
-                </div>                                                                                
+    <div class="landing-screen" id="landingScreen">
+        <!-- ... landing content ... -->
+        <div class="landing-content">
+            <h1>Ido Somekh</h1>
+            <p class="landing-bio">Entrepreneur | Developer | Music Enthusiast</p>
+            <div class="landing-links" id="landingLinks"></div>
+            <button class="launch-button" id="launchTerminalBtn">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="20" height="20" style="margin-right: 8px;">
+                    <path d="M4.5 2.5C3.67157 2.5 3 3.17157 3 4V20C3 20.8284 3.67157 21.5 4.5 21.5H19.5C20.3284 21.5 21 20.8284 21 20V4C21 3.17157 20.3284 2.5 19.5 2.5H4.5ZM4.5 4H19.5V6H4.5V4ZM7.25 8.25L5.75 9.75L9.25 13.25L5.75 16.75L7.25 18.25L10.75 14.75L12.25 16.25L13.75 14.75L10.75 11.75L13.75 8.75L12.25 7.25L10.75 10.25L7.25 8.25Z"/>
+                </svg>
+                Launch Terminal
+            </button>
+        </div>
+        <footer class="landing-footer">
+            © <span id="currentYearLanding"></span> Ido Somekh.
+            Powered by <a href="https://pages.github.com/" target="_blank" rel="noopener">GitHub</a>.
+        </footer>
+    </div>
+
+    <div class="terminal-window hidden" id="terminalWindow">
+        <div class="title-bar">
+            <span class="title-bar-text">idosomekh@terminal:~</span>
+            <div class="title-bar-buttons">
+                <!-- MODIFIED: Only the close button -->
+                <span class="close-btn" id="terminalCloseBtn">X</span>
             </div>
         </div>
-    </body>
+        <div class="terminal-output" id="terminalOutput"></div>
+        <div class="terminal-input-line" id="terminalInputLine">
+            <span class="prompt-user" id="promptUser">user</span><span class="prompt-colon">:</span><span class="prompt-path" id="promptPath">~</span><span class="prompt-symbol">$</span>
+            <input type="text" id="commandInput" class="command-input" autocomplete="off" spellcheck="false">
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
 </html>

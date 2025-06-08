@@ -1,0 +1,287 @@
+/* Catppuccin Mocha Variables (same as before) */
+:root {
+    /* ... your existing variables ... */
+    --base: #1E1E2E;
+    --mantle: #181825;
+    --crust: #11111B;
+    --text: #CDD6F4;
+    --subtext0: #A6ADC8;
+    --subtext1: #BAC2DE;
+    --overlay0: #6C7086;
+    --overlay1: #7F849C;
+    --overlay2: #9399B2;
+    --surface0: #313244;
+    --surface1: #45475A;
+    --mauve: #CBA6F7;
+    --pink: #F5C2E7;
+    --red: #F38BA8;
+    --green: #A6E3A1;
+    --yellow: #F9E2AF;
+    --blue: #89B4FA;
+    --font-mono: 'JetBrains Mono Regular', 'Consolas', 'Courier New', monospace;
+}
+
+@font-face {
+    font-family: 'JetBrains Mono Regular';
+    src: url('assets/Fonts/JetBrainsMono-Regular.ttf');
+}
+
+body {
+    -ms-scroll-chaining: none;
+    overscroll-behavior: none;
+    margin: 0;
+    /* padding: 0; REMOVED - will be conditional */
+    background-color: var(--base); /* Default to landing page background */
+    color: var(--text);
+    font-family: var(--font-mono);
+    font-size: 16px;
+    line-height: 1.7;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh; /* Ensure body takes full viewport height */
+    box-sizing: border-box;
+    overflow: hidden; /* Prevent body scrollbars by default */
+}
+
+/* Apply padding and different background when terminal is active */
+body:not(.landing-active) {
+    padding: 20px;
+    background-color: var(--crust);
+}
+/* Keep body overflow hidden when landing is active too */
+body.landing-active {
+    padding: 0; /* No padding when landing is full screen */
+    /* overflow: hidden; is already set on body by default now */
+}
+
+
+/* Landing Screen Styles */
+.landing-screen {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    /* min-height: 100vh; -- Body handles this */
+    width: 100%;
+    height: 100%; /* Take full height of parent (body) */
+    text-align: center;
+    color: var(--text);
+    background-color: var(--base);
+    /* padding: 20px; -- Body handles padding when terminal is shown */
+    box-sizing: border-box;
+    opacity: 1;
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+}
+
+.landing-screen.fade-out {
+    opacity: 0;
+    transform: scale(0.95);
+    pointer-events: none;
+}
+
+.landing-content {
+    max-width: 600px;
+    margin-bottom: auto;
+    padding-top: 10vh;
+}
+
+.landing-content h1 {
+    font-size: 2.8em;
+    color: var(--mauve);
+    margin-bottom: 0.3em;
+    font-weight: 600;
+}
+
+.landing-bio {
+    font-size: 1.2em;
+    color: var(--subtext1);
+    margin-bottom: 2em;
+}
+
+.landing-links {
+    margin-bottom: 2.5em;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+}
+
+.landing-links a {
+    color: var(--blue);
+    background-color: var(--surface0);
+    padding: 10px 20px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 1em;
+    transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+.landing-links a:hover {
+    background-color: var(--surface1);
+    color: var(--pink);
+    transform: translateY(-2px);
+}
+.landing-links a img { /* For icons in links */
+    width: 20px;
+    height: 20px;
+    border-radius: 3px;
+    /* REMOVED filter properties */
+}
+/* .landing-links a:hover img { REMOVED filter properties } */
+
+
+.launch-button {
+    background-color: var(--blue);
+    color: var(--crust);
+    border: none;
+    padding: 15px 30px;
+    font-size: 1.1em;
+    font-family: var(--font-mono);
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+.launch-button:hover {
+    background-color: var(--pink);
+    transform: translateY(-2px) scale(1.02);
+}
+.launch-button:active {
+    transform: translateY(0px) scale(1);
+}
+
+.landing-footer {
+    width: 100%;
+    padding: 20px;
+    font-size: 0.9em;
+    color: var(--subtext0);
+    margin-top: auto;
+}
+.landing-footer a {
+    color: var(--overlay2);
+    text-decoration: none;
+}
+.landing-footer a:hover {
+    color: var(--mauve);
+    text-decoration: underline;
+}
+
+/* Terminal Window Modifications */
+.terminal-window {
+    background-color: var(--base);
+    border: 2px solid var(--overlay2);
+    box-shadow: 6px 6px 0px 0px var(--crust);
+    width: 100%;
+    max-width: 850px;
+    height: 85vh;
+    max-height: 700px;
+    display: flex; /* Keep as flex for internal layout */
+    flex-direction: column;
+    /* overflow: hidden; -- This is fine for the window itself */
+    transform: scale(0.7) translateY(30px);
+    opacity: 0;
+    transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1), opacity 0.5s ease-out;
+    z-index: 50;
+    position: relative; /* Or absolute if body is the direct parent and sized */
+}
+
+.terminal-window.visible {
+    transform: scale(1) translateY(0);
+    opacity: 1;
+}
+
+.title-bar {
+    background-color: var(--mantle);
+    color: var(--subtext1);
+    padding: 6px 12px;
+    font-size: 0.95em;
+    display: flex;
+    justify-content: space-between; /* Title on left, button on right */
+    align-items: center;
+    border-bottom: 1px solid var(--overlay2);
+    user-select: none;
+    flex-shrink: 0;
+}
+
+.title-bar-buttons { /* Container for the close button */
+    display: flex;
+    /* No specific alignment needed if only one button */
+}
+
+.close-btn { /* Style for the X button */
+    color: var(--red);
+    font-weight: bold;
+    cursor: pointer;
+    padding: 0 5px; /* Add some clickable area */
+    transition: background-color 0.2s ease;
+}
+.close-btn:hover {
+    background-color: var(--surface0); /* Subtle hover */
+}
+
+
+.terminal-output {
+    padding: 12px 18px;
+    flex-grow: 1;
+    overflow-y: auto;
+    word-wrap: break-word;
+    scrollbar-width: thin;
+    scrollbar-color: var(--overlay0) var(--surface0);
+}
+.terminal-output::-webkit-scrollbar { width: 10px; }
+.terminal-output::-webkit-scrollbar-track { background: var(--surface0); border-radius: 5px; }
+.terminal-output::-webkit-scrollbar-thumb { background-color: var(--overlay0); border-radius: 5px; border: 2px solid var(--surface0); }
+.terminal-output::-webkit-scrollbar-thumb:hover { background-color: var(--overlay1); }
+
+.terminal-output .output-line { margin-bottom: 3px; white-space: pre-wrap; }
+.terminal-output .output-line.command-echo { color: var(--subtext1); }
+.terminal-output .output-line.error { color: var(--red); }
+.terminal-output .output-line.success { color: var(--green); }
+.terminal-output .output-line.info { color: var(--blue); }
+.terminal-output .output-line.warning { color: var(--yellow); }
+.terminal-output a { color: var(--mauve); text-decoration: underline; }
+.terminal-output a:hover { color: var(--pink); background-color: var(--surface0); }
+.terminal-output .link-item-output { display: flex; align-items: center; margin-bottom: 4px; }
+/* .terminal-output .link-icon-output (This class will no longer be used for icons in 'ls') */
+
+.terminal-input-line { display: flex; align-items: center; padding: 8px 18px 12px 18px; border-top: 1px solid var(--surface0); background-color: var(--base); flex-shrink: 0; }
+.prompt-user { color: var(--green); }
+.prompt-colon { color: var(--text); margin: 0 1px; }
+.prompt-path { color: var(--blue); }
+.prompt-symbol { color: var(--text); margin-right: 6px; }
+.command-input { flex-grow: 1; background-color: transparent; border: none; outline: none; color: var(--text); font-family: var(--font-mono); font-size: inherit; padding: 0; caret-color: var(--yellow); }
+
+/* Utility Class */
+.hidden {
+    display: none !important;
+}
+
+/* Responsive adjustments (keep as is or adjust further if needed) */
+@media (max-width: 768px) {
+    body:not(.landing-active) { padding: 10px; }
+    body { font-size: 15px; }
+    .terminal-window { max-width: 95vw; height: calc(100vh - 20px); max-height: none; }
+    .terminal-output { padding: 10px 12px; }
+    .terminal-input-line { padding: 6px 12px 10px 12px; }
+    .terminal-output::-webkit-scrollbar { width: 8px; }
+    .terminal-output::-webkit-scrollbar-thumb { border: 1px solid var(--surface0); }
+}
+
+@media (max-width: 480px) {
+    body:not(.landing-active) { padding: 5px; }
+    body { font-size: 14px; }
+    .terminal-window { border-radius: 0; border-left: 0; border-right: 0; box-shadow: none; height: calc(100vh - 10px); }
+    .terminal-output::-webkit-scrollbar { display: none; }
+    /* .terminal-output { scrollbar-width: none; } */
+}
